@@ -1,358 +1,733 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
-
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>NEXA | Tu música, tu mundo, tu IA</title>
+    <title>NEXA — Music</title>
+
+    <meta name="description" content="NEXA — Tu experiencia musical.">
+    <meta name="theme-color" content="#090b12">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
 
     <link rel="stylesheet" href="styles.css">
-
 </head>
 
 <body>
 
-    <aside class="sidebar">
+    <!-- SIDEBAR -->
 
-        <div class="logo">
-            🎧 <span>NEXA</span>
+    <aside class="sidebar" id="sidebar">
+
+        <div class="brand">
+            <div class="brand-icon">🎧</div>
+
+            <div class="brand-text">
+                <span class="brand-main">NEXA</span>
+                <span class="brand-sub">MUSIC</span>
+            </div>
         </div>
 
-        <nav>
+        <nav class="main-nav">
 
-            <button class="menu-btn active" data-section="inicio">
-                🏠 <span>Inicio</span>
+            <button class="nav-item active" data-section="home">
+                <span class="nav-icon">⌂</span>
+                <span>Inicio</span>
             </button>
 
-            <button class="menu-btn" data-section="explorar">
-                🔎 <span>Explorar</span>
+            <button class="nav-item" data-section="explore">
+                <span class="nav-icon">⌕</span>
+                <span>Explorar</span>
             </button>
 
-            <button class="menu-btn" data-section="musica">
-                🎵 <span>Tu música</span>
+            <button class="nav-item" data-section="library">
+                <span class="nav-icon">▣</span>
+                <span>Biblioteca</span>
             </button>
 
-            <button class="menu-btn" data-section="favoritos">
-                ❤️ <span>Favoritos</span>
+            <button class="nav-item" data-section="favorites">
+                <span class="nav-icon">♥</span>
+                <span>Favoritos</span>
+                <span class="nav-count" id="favoriteCount">0</span>
             </button>
 
-            <button class="menu-btn" data-section="playlists">
-                📚 <span>Playlists</span>
-            </button>
-
-            <button class="menu-btn" data-section="ia">
-                🤖 <span>NEXA IA</span>
+            <button class="nav-item" data-section="ai">
+                <span class="nav-icon">✦</span>
+                <span>NEXA IA</span>
             </button>
 
         </nav>
 
-    </aside>
+        <div class="sidebar-section">
 
+            <div class="sidebar-title">
+                <span>TUS PLAYLISTS</span>
 
-    <main class="main">
+                <button id="addPlaylistButton" title="Crear playlist">
+                    +
+                </button>
+            </div>
 
-        <header class="topbar">
+            <div id="playlistNav" class="playlist-nav"></div>
 
-            <div>
+        </div>
 
-                <h1>¡Hola! 👋</h1>
+        <div class="sidebar-bottom">
 
-                <p>Descubre música creada para ti.</p>
+            <button class="sidebar-action" id="settingsButton">
+                ⚙
+                <span>Configuración</span>
+            </button>
+
+            <div class="user-card">
+
+                <div class="user-avatar">
+                    N
+                </div>
+
+                <div class="user-details">
+                    <strong>NexaUser</strong>
+                    <span>Premium</span>
+                </div>
+
+                <button id="userMenuButton" class="user-menu">
+                    ⋮
+                </button>
 
             </div>
 
-            <div class="profile">
+        </div>
 
-                🔔
+    </aside>
 
-                <div class="avatar">
-                    N
+
+    <!-- MOBILE HEADER -->
+
+    <header class="mobile-header">
+
+        <button id="mobileMenuButton" class="mobile-menu">
+            ☰
+        </button>
+
+        <div class="mobile-logo">
+            🎧 <strong>NEXA</strong>
+        </div>
+
+        <button id="mobileSearchButton" class="mobile-search">
+            ⌕
+        </button>
+
+    </header>
+
+
+    <!-- MAIN -->
+
+    <main class="main-content">
+
+        <!-- TOPBAR -->
+
+        <header class="topbar">
+
+            <div class="page-heading">
+
+                <p id="greetingText">
+                    Buenas tardes
+                </p>
+
+                <h1 id="pageTitle">
+                    Descubre tu música
+                </h1>
+
+            </div>
+
+            <div class="topbar-actions">
+
+                <div class="global-search">
+
+                    <span class="search-icon">
+                        ⌕
+                    </span>
+
+                    <input
+                        type="search"
+                        id="globalSearch"
+                        placeholder="Buscar canciones, artistas..."
+                        autocomplete="off"
+                    >
+
+                    <kbd>Ctrl K</kbd>
+
                 </div>
+
+                <button
+                    class="topbar-button"
+                    id="notificationsButton"
+                    title="Notificaciones"
+                >
+                    ♢
+                    <span class="notification-dot"></span>
+                </button>
+
+                <button
+                    class="top-avatar"
+                    id="topAvatar"
+                >
+                    N
+                </button>
 
             </div>
 
         </header>
 
 
-        <section id="inicioSection">
+        <!-- HOME -->
 
-            <div class="section-title">
+        <section
+            id="homeSection"
+            class="page-section active"
+            data-page="home"
+        >
 
-                <h2 id="musicTitle">
-                    Recomendado para ti
-                </h2>
+            <div class="hero">
 
-                <button>
-                    Ver todo
-                </button>
+                <div class="hero-content">
+
+                    <span class="hero-label">
+                        ✦ NEXA ORIGINAL
+                    </span>
+
+                    <h2>
+                        Tu música.<br>
+                        Tu momento.
+                    </h2>
+
+                    <p>
+                        Descubre canciones, crea tu colección
+                        y disfruta de tu música favorita.
+                    </p>
+
+                    <div class="hero-buttons">
+
+                        <button
+                            class="primary-button"
+                            id="heroPlayButton"
+                        >
+                            ▶ Reproducir ahora
+                        </button>
+
+                        <button
+                            class="secondary-button"
+                            id="heroExploreButton"
+                        >
+                            Explorar
+                        </button>
+
+                    </div>
+
+                </div>
+
+                <div class="hero-visual">
+
+                    <div class="hero-disc">
+                        <div class="disc-center">
+                            N
+                        </div>
+                    </div>
+
+                    <div class="hero-glow"></div>
+
+                </div>
 
             </div>
 
 
-            <input
-                id="searchInput"
-                type="text"
-                placeholder="🔎 Buscar música..."
-            >
+            <!-- RECENT -->
+
+            <section class="content-section">
+
+                <div class="section-header">
+
+                    <div>
+                        <span class="section-eyebrow">
+                            CONTINÚA ESCUCHANDO
+                        </span>
+
+                        <h2>
+                            Escuchado recientemente
+                        </h2>
+                    </div>
+
+                    <button
+                        class="see-all"
+                        data-section-target="library"
+                    >
+                        Ver todo →
+                    </button>
+
+                </div>
+
+                <div
+                    class="music-row"
+                    id="recentGrid"
+                ></div>
+
+            </section>
+
+
+            <!-- RECOMMENDED -->
+
+            <section class="content-section">
+
+                <div class="section-header">
+
+                    <div>
+                        <span class="section-eyebrow">
+                            PARA TI
+                        </span>
+
+                        <h2>
+                            Recomendado para ti
+                        </h2>
+                    </div>
+
+                </div>
+
+                <div
+                    class="music-grid"
+                    id="recommendedGrid"
+                ></div>
+
+            </section>
+
+
+            <!-- FAVORITES -->
+
+            <section class="content-section">
+
+                <div class="section-header">
+
+                    <div>
+                        <span class="section-eyebrow">
+                            TU COLECCIÓN
+                        </span>
+
+                        <h2>
+                            Tus favoritos
+                        </h2>
+                    </div>
+
+                    <button
+                        class="see-all"
+                        data-section-target="favorites"
+                    >
+                        Ver favoritos →
+                    </button>
+
+                </div>
+
+                <div
+                    class="music-row"
+                    id="homeFavoritesGrid"
+                ></div>
+
+                <div
+                    class="empty-small"
+                    id="homeFavoritesEmpty"
+                >
+                    ❤️ Todavía no tienes canciones favoritas.
+                </div>
+
+            </section>
+
+        </section>
+
+
+        <!-- EXPLORE -->
+
+        <section
+            id="exploreSection"
+            class="page-section"
+            data-page="explore"
+        >
+
+            <div class="page-banner">
+
+                <div>
+
+                    <span class="section-eyebrow">
+                        DESCUBRE
+                    </span>
+
+                    <h2>
+                        Explorar música
+                    </h2>
+
+                    <p>
+                        Encuentra algo nuevo para escuchar.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="search-panel">
+
+                <div class="large-search">
+
+                    <span>⌕</span>
+
+                    <input
+                        type="search"
+                        id="exploreSearch"
+                        placeholder="Busca una canción, artista o género..."
+                    >
+
+                </div>
+
+            </div>
+
+
+            <div class="filter-bar">
+
+                <button
+                    class="filter-button active"
+                    data-filter="all"
+                >
+                    Todo
+                </button>
+
+                <div id="genreFilters"></div>
+
+            </div>
+
+
+            <div class="results-heading">
+
+                <div>
+
+                    <span class="section-eyebrow">
+                        RESULTADOS
+                    </span>
+
+                    <h2 id="resultsTitle">
+                        Todas las canciones
+                    </h2>
+
+                </div>
+
+                <select id="sortSelect">
+                    <option value="default">Orden recomendado</option>
+                    <option value="title">Nombre</option>
+                    <option value="artist">Artista</option>
+                    <option value="genre">Género</option>
+                </select>
+
+            </div>
 
 
             <div
-                class="music-grid"
-                id="musicGrid"
+                class="music-grid large-grid"
+                id="exploreGrid"
+            ></div>
+
+
+            <div
+                class="no-results"
+                id="noResults"
+                hidden
             >
 
-                <article
-                    class="music-card"
-                    data-song="Canción 1"
-                    data-search="cancion 1"
-                >
+                <div>🔎</div>
 
-                    <div class="cover cover-one">
-                        🎵
-                    </div>
+                <h3>
+                    No encontramos música
+                </h3>
 
-                    <h3>
-                        Canción 1
-                    </h3>
-
-                    <p>
-                        NEXA
-                    </p>
-
-                    <button class="play-btn">
-                        ▶
-                    </button>
-
-                    <button class="favorite-btn">
-                        ♡
-                    </button>
-
-                </article>
-
-
-                <article
-                    class="music-card"
-                    data-song="Canción 2"
-                    data-search="cancion 2"
-                >
-
-                    <div class="cover cover-two">
-                        🎧
-                    </div>
-
-                    <h3>
-                        Canción 2
-                    </h3>
-
-                    <p>
-                        NEXA
-                    </p>
-
-                    <button class="play-btn">
-                        ▶
-                    </button>
-
-                    <button class="favorite-btn">
-                        ♡
-                    </button>
-
-                </article>
-
-
-                <article
-                    class="music-card"
-                    data-song="Canción 3"
-                    data-search="cancion 3"
-                >
-
-                    <div class="cover cover-three">
-                        🔥
-                    </div>
-
-                    <h3>
-                        Canción 3
-                    </h3>
-
-                    <p>
-                        NEXA
-                    </p>
-
-                    <button class="play-btn">
-                        ▶
-                    </button>
-
-                    <button class="favorite-btn">
-                        ♡
-                    </button>
-
-                </article>
-
-
-                <article
-                    class="music-card"
-                    data-song="Canción 4"
-                    data-search="cancion 4"
-                >
-
-                    <div class="cover cover-four">
-                        💜
-                    </div>
-
-                    <h3>
-                        Canción 4
-                    </h3>
-
-                    <p>
-                        NEXA
-                    </p>
-
-                    <button class="play-btn">
-                        ▶
-                    </button>
-
-                    <button class="favorite-btn">
-                        ♡
-                    </button>
-
-                </article>
+                <p>
+                    Prueba con otro nombre, artista o género.
+                </p>
 
             </div>
 
         </section>
 
 
-        <section id="favoritosSection">
+        <!-- LIBRARY -->
 
-            <div class="section-title">
+        <section
+            id="librarySection"
+            class="page-section"
+            data-page="library"
+        >
 
-                <h2>
-                    ❤️ Tus favoritos
-                </h2>
+            <div class="page-title-row">
+
+                <div>
+
+                    <span class="section-eyebrow">
+                        TU MÚSICA
+                    </span>
+
+                    <h2>
+                        Biblioteca
+                    </h2>
+
+                    <p>
+                        Todo lo que has escuchado en NEXA.
+                    </p>
+
+                </div>
 
             </div>
+
+
+            <div class="library-tabs">
+
+                <button
+                    class="library-tab active"
+                    data-library-tab="songs"
+                >
+                    🎵 Canciones
+                </button>
+
+                <button
+                    class="library-tab"
+                    data-library-tab="recent"
+                >
+                    🕘 Recientes
+                </button>
+
+                <button
+                    class="library-tab"
+                    data-library-tab="playlists"
+                >
+                    📁 Playlists
+                </button>
+
+            </div>
+
+
+            <div
+                id="librarySongs"
+                class="library-content active"
+            >
+
+                <div
+                    class="music-grid"
+                    id="libraryGrid"
+                ></div>
+
+            </div>
+
+
+            <div
+                id="libraryRecent"
+                class="library-content"
+            >
+
+                <div
+                    class="music-grid"
+                    id="libraryRecentGrid"
+                ></div>
+
+            </div>
+
+
+            <div
+                id="libraryPlaylists"
+                class="library-content"
+            >
+
+                <div
+                    class="playlist-grid"
+                    id="playlistGrid"
+                ></div>
+
+            </div>
+
+        </section>
+
+
+        <!-- FAVORITES -->
+
+        <section
+            id="favoritesSection"
+            class="page-section"
+            data-page="favorites"
+        >
+
+            <div class="favorites-header">
+
+                <div class="favorites-cover">
+                    ❤️
+                </div>
+
+                <div>
+
+                    <span class="section-eyebrow">
+                        TU COLECCIÓN
+                    </span>
+
+                    <h2>
+                        Canciones favoritas
+                    </h2>
+
+                    <p id="favoritesDescription">
+                        0 canciones guardadas
+                    </p>
+
+                </div>
+
+            </div>
+
 
             <div
                 class="music-grid"
                 id="favoritesGrid"
             ></div>
 
-            <p id="noFavorites">
-                Todavía no tienes canciones favoritas.
-            </p>
 
-        </section>
+            <div
+                class="empty-state"
+                id="favoritesEmpty"
+                hidden
+            >
 
+                <div class="empty-icon">
+                    ♡
+                </div>
 
-        <section id="playlistsSection">
+                <h3>
+                    Tu colección está vacía
+                </h3>
 
-            <div class="section-title">
+                <p>
+                    Presiona el corazón de una canción
+                    para agregarla a favoritos.
+                </p>
 
-                <h2>
-                    Tus playlists
-                </h2>
-
-                <button>
-                    + Crear playlist
+                <button
+                    class="primary-button"
+                    data-section-target="explore"
+                >
+                    Explorar música
                 </button>
 
             </div>
 
-            <div class="playlist-grid">
-
-                <div class="playlist">
-
-                    <div class="playlist-icon">
-                        🎶
-                    </div>
-
-                    <div>
-
-                        <h3>
-                            Mis favoritas
-                        </h3>
-
-                        <p>
-                            24 canciones
-                        </p>
-
-                    </div>
-
-                </div>
-
-
-                <div class="playlist">
-
-                    <div class="playlist-icon">
-                        🔥
-                    </div>
-
-                    <div>
-
-                        <h3>
-                            Para entrenar
-                        </h3>
-
-                        <p>
-                            18 canciones
-                        </p>
-
-                    </div>
-
-                </div>
-
-
-                <div class="playlist">
-
-                    <div class="playlist-icon">
-                        🌙
-                    </div>
-
-                    <div>
-
-                        <h3>
-                            Noche tranquila
-                        </h3>
-
-                        <p>
-                            15 canciones
-                        </p>
-
-                    </div>
-
-                </div>
-
-            </div>
-
         </section>
 
 
-        <section id="iaSection">
+        <!-- IA -->
 
-            <div class="ai-box">
+        <section
+            id="aiSection"
+            class="page-section"
+            data-page="ai"
+        >
 
-                <div class="ai-icon">
-                    🤖
+            <div class="ai-header">
+
+                <div class="ai-orb">
+                    ✦
                 </div>
 
                 <div>
 
+                    <span class="section-eyebrow">
+                        INTELIGENCIA MUSICAL
+                    </span>
+
                     <h2>
-                        Crea tu música con NEXA IA
+                        NEXA IA
                     </h2>
 
                     <p>
-                        Dile a NEXA qué quieres escuchar
-                        y crea una playlist personalizada.
+                        Dime qué quieres escuchar y buscaré
+                        la mejor opción dentro de tu biblioteca.
                     </p>
 
                 </div>
 
-                <button class="ai-button">
-                    Crear con IA
+            </div>
+
+
+            <div class="ai-suggestions">
+
+                <button data-ai-prompt="Quiero música tranquila">
+                    🌙 Música tranquila
                 </button>
+
+                <button data-ai-prompt="Quiero algo energético">
+                    ⚡ Algo energético
+                </button>
+
+                <button data-ai-prompt="Quiero música para la noche">
+                    🌃 Para la noche
+                </button>
+
+                <button data-ai-prompt="Recomiéndame una canción">
+                    ✦ Sorpréndeme
+                </button>
+
+            </div>
+
+
+            <div class="ai-chat">
+
+                <div
+                    class="ai-messages"
+                    id="aiMessages"
+                >
+
+                    <div class="ai-message ai-message-bot">
+
+                        <div class="ai-message-icon">
+                            ✦
+                        </div>
+
+                        <div class="ai-message-content">
+
+                            <strong>NEXA IA</strong>
+
+                            <p>
+                                Hola. Soy NEXA IA.
+                                Puedo recomendarte música de tu biblioteca.
+                                ¿Qué quieres escuchar?
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <form
+                    class="ai-input-area"
+                    id="aiForm"
+                >
+
+                    <input
+                        type="text"
+                        id="aiInput"
+                        placeholder="Escribe qué música quieres..."
+                        autocomplete="off"
+                    >
+
+                    <button type="submit">
+                        ➤
+                    </button>
+
+                </form>
 
             </div>
 
@@ -361,38 +736,117 @@
     </main>
 
 
-    <footer class="player">
+    <!-- QUEUE -->
 
-        <div class="current-song">
+    <aside
+        class="queue-panel"
+        id="queuePanel"
+    >
 
-            <div class="mini-cover">
-                🎵
-            </div>
+        <div class="queue-header">
 
             <div>
 
-                <strong>
-                    Canción 1
-                </strong>
+                <span class="section-eyebrow">
+                    REPRODUCCIÓN
+                </span>
 
-                <p>
-                    NEXA
-                </p>
+                <h2>
+                    Cola
+                </h2>
 
             </div>
+
+            <button id="closeQueue">
+                ×
+            </button>
+
+        </div>
+
+        <div
+            class="queue-list"
+            id="queueList"
+        ></div>
+
+        <div class="queue-footer">
+
+            <button id="clearQueue">
+                Vaciar cola
+            </button>
+
+        </div>
+
+    </aside>
+
+
+    <!-- OVERLAY -->
+
+    <div
+        class="overlay"
+        id="overlay"
+    ></div>
+
+
+    <!-- AUDIO -->
+
+    <audio
+        id="audioPlayer"
+        preload="metadata"
+    ></audio>
+
+
+    <!-- PLAYER -->
+
+    <footer class="player">
+
+        <div class="player-track">
+
+            <div
+                class="player-cover"
+                id="playerCover"
+            >
+                🎵
+            </div>
+
+            <div class="player-track-info">
+
+                <strong id="playerTitle">
+                    Selecciona una canción
+                </strong>
+
+                <span id="playerArtist">
+                    NEXA
+                </span>
+
+            </div>
+
+            <button
+                class="player-like"
+                id="playerLike"
+                title="Agregar a favoritos"
+            >
+                ♡
+            </button>
 
         </div>
 
 
-        <div class="player-center">
+        <div class="player-main">
 
-            <div class="controls">
+            <div class="player-controls">
+
+                <button id="shuffleButton">
+                    🔀
+                </button>
 
                 <button id="previousButton">
                     ⏮
                 </button>
 
-                <button class="main-play">
+                <button
+                    class="play-button"
+                    id="playButton"
+                >
                     ▶
                 </button>
 
@@ -400,21 +854,26 @@
                     ⏭
                 </button>
 
+                <button id="repeatButton">
+                    🔁
+                </button>
+
             </div>
 
 
-            <div class="progress-area">
+            <div class="player-progress">
 
                 <span id="currentTime">
                     0:00
                 </span>
 
                 <input
-                    id="progressBar"
                     type="range"
+                    id="progressBar"
                     min="0"
                     max="100"
                     value="0"
+                    step="0.1"
                 >
 
                 <span id="duration">
@@ -426,24 +885,288 @@
         </div>
 
 
-        <div class="volume">
+        <div class="player-actions">
 
-            🔊
+            <button id="queueButton">
+                ☷
+            </button>
+
+            <button id="volumeButton">
+                🔊
+            </button>
 
             <input
                 type="range"
+                id="volumeSlider"
                 min="0"
                 max="100"
                 value="70"
             >
+
+            <button id="expandPlayer">
+                ⛶
+            </button>
 
         </div>
 
     </footer>
 
 
+    <!-- EXPANDED PLAYER -->
+
+    <div
+        class="expanded-player"
+        id="expandedPlayer"
+    >
+
+        <button
+            class="expanded-close"
+            id="closeExpandedPlayer"
+        >
+            ↓
+        </button>
+
+        <div class="expanded-content">
+
+            <span class="section-eyebrow">
+                REPRODUCIENDO AHORA
+            </span>
+
+            <div
+                class="expanded-cover"
+                id="expandedCover"
+            >
+                🎵
+            </div>
+
+            <h2 id="expandedTitle">
+                Selecciona una canción
+            </h2>
+
+            <p id="expandedArtist">
+                NEXA
+            </p>
+
+            <div class="expanded-progress">
+
+                <span id="expandedCurrent">
+                    0:00
+                </span>
+
+                <input
+                    type="range"
+                    id="expandedProgress"
+                    min="0"
+                    max="100"
+                    value="0"
+                >
+
+                <span id="expandedDuration">
+                    0:00
+                </span>
+
+            </div>
+
+            <div class="expanded-controls">
+
+                <button id="expandedShuffle">
+                    🔀
+                </button>
+
+                <button id="expandedPrevious">
+                    ⏮
+                </button>
+
+                <button
+                    class="expanded-play"
+                    id="expandedPlay"
+                >
+                    ▶
+                </button>
+
+                <button id="expandedNext">
+                    ⏭
+                </button>
+
+                <button id="expandedRepeat">
+                    🔁
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- NOTIFICATION -->
+
+    <div
+        class="notification"
+        id="notification"
+    >
+
+        <span id="notificationIcon">
+            ✓
+        </span>
+
+        <span id="notificationText">
+            Listo
+        </span>
+
+    </div>
+
+
+    <!-- PLAYLIST MODAL -->
+
+    <div
+        class="modal"
+        id="playlistModal"
+        hidden
+    >
+
+        <div class="modal-box">
+
+            <button
+                class="modal-close"
+                data-close-modal="playlistModal"
+            >
+                ×
+            </button>
+
+            <span class="section-eyebrow">
+                NUEVA PLAYLIST
+            </span>
+
+            <h2>
+                Crear playlist
+            </h2>
+
+            <p>
+                Crea una colección personalizada.
+            </p>
+
+            <input
+                type="text"
+                id="playlistName"
+                placeholder="Nombre de la playlist..."
+                maxlength="40"
+            >
+
+            <div class="modal-actions">
+
+                <button
+                    class="secondary-button"
+                    data-close-modal="playlistModal"
+                >
+                    Cancelar
+                </button>
+
+                <button
+                    class="primary-button"
+                    id="createPlaylistButton"
+                >
+                    Crear
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- SETTINGS MODAL -->
+
+    <div
+        class="modal"
+        id="settingsModal"
+        hidden
+    >
+
+        <div class="modal-box settings-box">
+
+            <button
+                class="modal-close"
+                data-close-modal="settingsModal"
+            >
+                ×
+            </button>
+
+            <span class="section-eyebrow">
+                NEXA
+            </span>
+
+            <h2>
+                Configuración
+            </h2>
+
+            <div class="setting-row">
+
+                <div>
+                    <strong>Animaciones</strong>
+                    <p>Mostrar efectos visuales.</p>
+                </div>
+
+                <label class="switch">
+
+                    <input
+                        type="checkbox"
+                        id="animationsToggle"
+                        checked
+                    >
+
+                    <span></span>
+
+                </label>
+
+            </div>
+
+
+            <div class="setting-row">
+
+                <div>
+                    <strong>Notificaciones</strong>
+                    <p>Mostrar mensajes de NEXA.</p>
+                </div>
+
+                <label class="switch">
+
+                    <input
+                        type="checkbox"
+                        id="notificationsToggle"
+                        checked
+                    >
+
+                    <span></span>
+
+                </label>
+
+            </div>
+
+
+            <div class="setting-row">
+
+                <div>
+                    <strong>Restablecer datos</strong>
+                    <p>Eliminar favoritos, recientes y playlists.</p>
+                </div>
+
+                <button
+                    class="danger-button"
+                    id="resetDataButton"
+                >
+                    Restablecer
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
     <script src="script.js"></script>
 
 </body>
-
 </html>
